@@ -5,7 +5,8 @@
     "main": "src/hello-intern.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node src/hello-intern.js"
+        "start": "node src/hello-intern.js",
+        "day-8": "node src/day-8-data-types.js"
     },
     "keywords": [
         "internship",
