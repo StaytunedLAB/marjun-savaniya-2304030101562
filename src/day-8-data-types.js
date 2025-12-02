@@ -165,7 +165,7 @@ console.log("-".repeat(40));
 
 // Creating Date objects
 const now = new Date();
-const specificDate = new Date(2024, 11, 25, 10, 30, 0); // Dec 25, 2024, 10:30:00
+const specificDate = new Date(2024, 11, 25, 10, 30, 0); // Dec 25, 2024, 10:30:00 (month 11 = December, 0-indexed)
 const fromString = new Date("2024-01-15T08:00:00");
 
 console.log("Current date:", now.toISOString());
@@ -326,10 +326,13 @@ const product = {
     stock: 50,
     
     // Custom toJSON method
+    // Note: price is formatted as string for display purposes
+    // If JSON is parsed back, you would need to convert it back to number
     toJSON() {
         return {
             name: this.name,
             price: `$${this.price.toFixed(2)}`,
+            priceValue: this.price, // Keep numeric value for parsing
             available: this.stock > 0,
             // internalCode is excluded
         };
@@ -376,7 +379,7 @@ const literal = [1, 2, 3, 4, 5];
 console.log("Array literal [1,2,3,4,5]:", literal);
 
 // new Array() - different behaviors!
-const newArray1 = new Array(3);        // Creates sparse array with 3 empty slots
+const newArray1 = new Array(3);        // Creates array with length 3 and undefined elements
 const newArray2 = new Array(1, 2, 3);  // Creates [1, 2, 3]
 console.log("new Array(3):", newArray1, "| length:", newArray1.length);
 console.log("new Array(1,2,3):", newArray2);
