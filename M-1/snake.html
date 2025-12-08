@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haunted Snake</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Creepster for title, Nosifer for scary elements, Outfit for readable text -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&family=Outfit:wght@300;400;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="game-wrapper">
+        <div class="ui-panel">
+            <h1 class="title-glitch" data-text="HAUNTED SNAKE">HAUNTED SNAKE</h1>
+
+            <div class="stats-container">
+                <div class="stat-box">
+                    <span class="label">SCORE</span>
+                    <span id="score">0</span>
+                </div>
+                <div class="stat-box level-box">
+                    <span class="label">LEVEL</span>
+                    <span id="level">1</span>
+                </div>
+                <div class="stat-box">
+                    <span class="label">BEST</span>
+                    <span id="high-score">0</span>
+                </div>
+            </div>
+
+            <button id="restart-btn" class="hidden">RESURRECT</button>
+        </div>
+
+        <div class="canvas-container">
+            <canvas id="game-board" width="400" height="400"></canvas>
+            <div class="overlay hidden" id="game-over-overlay">
+                <h2>YOU DIED</h2>
+                <p>Press Enter to Resurrect</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

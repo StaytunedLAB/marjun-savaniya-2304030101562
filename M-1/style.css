@@ -1,0 +1,238 @@
+:root {
+    --bg-color: #050505;
+    /* Pitch black */
+    --panel-bg: rgba(20, 10, 10, 0.85);
+    --primary-orange: #ff6600;
+    --primary-purple: #8b5cf6;
+    --toxic-green: #39ff14;
+    --blood-red: #cc0000;
+    --text-color: #e5e7eb;
+
+    --font-heading: 'Creepster', cursive;
+    --font-ui: 'Outfit', sans-serif;
+    --shadow-glow: 0 0 15px rgba(255, 102, 0, 0.6);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    background-image:
+        radial-gradient(circle at 50% 50%, #1a0b0b 0%, #000 100%);
+    font-family: var(--font-ui);
+    color: var(--text-color);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.game-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    z-index: 10;
+}
+
+.ui-panel {
+    background: var(--panel-bg);
+    border: 1px solid #331111;
+    padding: 20px 40px;
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(255, 102, 0, 0.15);
+    text-align: center;
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    backdrop-filter: blur(5px);
+}
+
+h1 {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    font-size: 3.5rem;
+    letter-spacing: 3px;
+    color: var(--primary-orange);
+    text-shadow: 4px 4px 0px #2a0a0a, 0 0 20px var(--primary-orange);
+    margin-bottom: 5px;
+    transition: transform 0.3s ease;
+    cursor: default;
+}
+
+h1:hover {
+    transform: scale(1.05) rotate(-2deg);
+    text-shadow: 6px 6px 0px #4a0a0a, 0 0 30px var(--primary-orange);
+}
+
+.title-glitch:hover {
+    animation: glitch 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
+}
+
+@keyframes glitch {
+    0% {
+        transform: translate(0)
+    }
+
+    20% {
+        transform: translate(-2px, 2px)
+    }
+
+    40% {
+        transform: translate(-2px, -2px)
+    }
+
+    60% {
+        transform: translate(2px, 2px)
+    }
+
+    80% {
+        transform: translate(2px, -2px)
+    }
+
+    100% {
+        transform: translate(0)
+    }
+}
+
+.stats-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 15px;
+}
+
+.stat-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #442222;
+    flex: 1;
+    transition: all 0.3s ease;
+}
+
+.stat-box:hover {
+    border-color: var(--primary-purple);
+    box-shadow: 0 0 10px var(--primary-purple);
+    transform: translateY(-2px);
+}
+
+.label {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    margin-bottom: 2px;
+    font-family: var(--font-heading);
+    letter-spacing: 1px;
+}
+
+#score,
+#high-score,
+#level {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+#level {
+    color: var(--primary-purple);
+}
+
+.canvas-container {
+    position: relative;
+    border-radius: 4px;
+    padding: 4px;
+    background: linear-gradient(45deg, #1a0b0b, #331111);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+}
+
+canvas {
+    background: #0a0505;
+    display: block;
+    border: 2px solid #331111;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--blood-red);
+    font-family: var(--font-heading);
+    z-index: 20;
+}
+
+.overlay.hidden {
+    display: none;
+}
+
+.overlay h2 {
+    font-size: 4rem;
+    text-shadow: 0 0 20px var(--blood-red);
+    margin-bottom: 10px;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+}
+
+.overlay p {
+    color: #fff;
+    font-family: var(--font-ui);
+    opacity: 0.8;
+}
+
+#restart-btn {
+    background: var(--primary-orange);
+    color: #000;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: 800;
+    cursor: pointer;
+    font-family: var(--font-ui);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+#restart-btn:hover {
+    background: var(--toxic-green);
+    box-shadow: 0 0 20px var(--toxic-green);
+    transform: scale(1.05);
+}
+
+#restart-btn.hidden {
+    display: none;
+}
