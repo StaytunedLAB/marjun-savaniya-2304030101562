@@ -28,7 +28,7 @@ function validateAndApplyTransaction(currentBalance, transaction) {
 
     // 1. Transaction Type Validation
     if (!type) {
-        throw new new TransactionError("Transaction type is missing.", transaction);
+        throw new TransactionError("Transaction type is missing.", transaction);
     }
     const normalizedType = String(type).trim().toLowerCase();
 
@@ -201,36 +201,3 @@ processBankTransactions(ACCOUNT_INPUT);
 //     transactions: [{ type: "Deposit", amount: 100 }]
 // };
 // processBankTransactions(CRASH_INPUT);
-class TransactionError extends Error {
-    constructor(message) {
-        super(message);
-        this.name = "TransactionError";
-    }
-}
-
-function parseAmount(amount, fieldName = "amount") {
-    if (amount === undefined || amount === null) {
-        throw new TransactionError(`Invalid ${fieldName}: Cannot be undefined or null.`);
-    }
-
-    const numericAmount = parseFloat(amount);
-
-    if (isNaN(numericAmount)) {
-        throw new TransactionError(`Invalid ${fieldName}: "${amount}" is not a valid number.`);
-    }
-
-    return numericAmount;
-}
-
-// Ensure the `processBankTransactions` function is defined, as it's called later.
-// This is a minimal placeholder to make the example runnable; the full implementation
-// would need to be provided from the user's context if it's not already in the file.
-// Assuming the user's snippet was *inside* this function, this part would not be needed.
-// However, the context shows `processBankTransactions` being called, but its definition
-// is cut off at the beginning of the provided snippet.
-// For the purpose of solving the "error" of missing definitions, these are crucial.
-/*
-function processBankTransactions(accountData) {
-    // ... (rest of the function from the user's codebase)
-}
-*/
