@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<head> 
+    <title>Sample HTML PROJECT</title>
+</head>
+<body>
+    <style>
+        :root{
+            --bg: #323232; /* matte black */
+            --surface: #0f0f0f;
+            --primary: #1a73e8;
+            --accent: #ffa3a4;
+            --text: #e8eef6;
+        }
+
+        html, body { height: 100%; }
+
+        body {
+            margin: 0;
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem;
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: clamp(1.5rem, 3vw, 3rem);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 700;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+            margin: 0 0 1rem 0;
+        }
+
+        .sample-text {
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+            border: 1px solid rgba(255,255,255,0.04);
+            padding: 1.25rem 1.5rem;
+            border-radius: 12px;
+            max-width: 800px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+            transition: transform 220ms cubic-bezier(.22,.9,.31,1), box-shadow 220ms ease, background 220ms ease;
+            display: inline-block;
+        }
+
+        .sample-text p {
+            margin: 0;
+            color: var(--accent);
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 1.25rem;
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateY(12px);
+            animation: fadeUp 800ms cubic-bezier(.22,.9,.31,1) 200ms forwards;
+        }
+
+        /* hover effects */
+        .sample-text:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 22px 40px rgba(0,0,0,0.6);
+            background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+            cursor: default;
+        }
+
+        .sample-text:hover p {
+            animation: floatUp 900ms ease-in-out infinite alternate;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(12px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes floatUp {
+            from { transform: translateY(0); }
+            to   { transform: translateY(-6px); }
+        }
+
+        /* Respect users who prefer reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .sample-text, .sample-text p {
+                animation: none !important;
+                transition: none !important;
+                transform: none !important;
+                opacity: 1 !important;
+            }
+        }
+    </style>
+
+    <div>
+        <h1>Welcome to My Sample HTML marjun</h1>
+        <div class="sample-text" role="region" aria-label="sample text">
+            <p>Heyy this is a animation i gave to this code.</p>
+        </div>
+    </div>
+</body>
