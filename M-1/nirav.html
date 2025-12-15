@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Text</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .animated-text {
+            font-size: 5rem;
+            transition: transform 0.3s, color 0.3s;
+            animation: fadeIn 2s;
+        }
+        .animated-text:hover {
+            transform: scale(1.2);
+            background: linear-gradient(90deg, #ae18ff, #39c4ff); /* Gradient color on hover */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: #ff6a00; /* Unique hover color */
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-text">Kem Cho Gafar Bhai</div>
+</body>
+</html>
