@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fully Interactive Text Adjuster</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <style>
+        /* -----------------------
+           1. Box and Text Styling
+           ----------------------- */
+        #content-box {
+            width: 400px;
+            height: 150px;
+            margin: 50px auto 20px;
+            padding: 20px;
+            border: 3px solid #007bff;
+            border-radius: 15px;
+            background-color: #333333;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Important to keep large text contained */
+        }
+
+        .adjustable-text {
+            font-family: 'Arial', sans-serif;
+            font-size: 24px; /* Initial Size */
+            font-weight: bold;
+            text-align: center;
+            
+            color: #ffcc00; /* Initial Color */
+
+            /* Animation Application (Pulse effect) */
+            animation: pulse 2s infinite alternate; 
+            transition: font-size 0.3s, color 0.3s; /* Smooth transitions for changes */
+        }
+
+        /* -----------------------
+           2. Control Panel Styling
+           ----------------------- */
+        .controls {
+            text-align: center;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column; /* Stack controls vertically */
+            gap: 15px;
+            width: 440px;
+            margin: 20px auto;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        .control-group {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .color-button, .apply-button {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* -----------------------
+           3. Keyframe Animation
+           ----------------------- */
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.05); opacity: 0.9; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="controls">
+        
+        <div class="control-group">
+            <label for="text-input">Change Text:</label>
+            <input type="text" id="text-input" placeholder="Type new text here..." style="flex-grow: 1; padding: 5px;">
+            <button class="apply-button" onclick="changeTextContent()" style="background-color: #28a745; color: white; margin-left: 10px;">Apply Text</button>
+        </div>
+
+        <div class="control-group">
+            <label for="size-input">Change Size (px):</label>
+            <input type="number" id="size-input" value="24" min="10" max="100" style="width: 80px; padding: 5px;">
+            <button class="apply-button" onclick="changeTextSize()" style="background-color: #ffc107; color: black; margin-left: 10px;">Apply Size</button>
+        </div>
+
+        <div class="control-group" style="justify-content: center;">
+            <label>Change Color:</label>
+            <button class="color-button" onclick="changeTextColor('red')" style="background-color: red; color: white;">Red</button>
+            <button class="color-button" onclick="changeTextColor('#00ff00')" style="background-color: #00ff00; color: black;">Green</button>
+            <button class="color-button" onclick="changeTextColor('rgb(0, 100, 255)')" style="background-color: rgb(0, 100, 255); color: white;">Blue</button>
+        </div>
+    </div>
+
+    <div id="content-box">
+        <span id="interactive-text" class="adjustable-text">
+            Text, Color, and Size are now adjustable!
+        </span>
+    </div>
+
+    <script>
+        const textElement = document.getElementById('interactive-text');
+        const textInput = document.getElementById('text-input');
+        const sizeInput = document.getElementById('size-input');
+
+        /**
+         * 1. Changes the text content inside the box
+         */
+        function changeTextContent() {
+            const newContent = textInput.value;
+            if (newContent.trim() !== '') {
+                textElement.textContent = newContent;
+            } else {
+                alert("Please enter some text.");
+            }
+        }
+        
+        /**
+         * 2. Changes the text size inside the box
+         */
+        function changeTextSize() {
+            const newSize = sizeInput.value;
+            if (newSize > 0) {
+                // Set the CSS style property for font size
+                textElement.style.fontSize = `${newSize}px`;
+            } else {
+                alert("Please enter a valid size greater than 0.");
+            }
+        }
+        
+        /**
+         * 3. Changes the text color and updates the glow
+         * @param {string} newColor - The CSS color value.
+         */
+        function changeTextColor(newColor) {
+            // Apply the new color to the text
+            textElement.style.color = newColor;
+
+            // Optional: Update the text-shadow/glow color to match the text
+            textElement.style.textShadow = `0 0 10px ${newColor}`; 
+        }
+
+    </script>
+
+</body>
+</html>
