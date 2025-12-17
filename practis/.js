@@ -21,7 +21,7 @@ function calculateGrade(score) {
             grade = "Invalid Score";
     }
 
-    console.log(Score: ${score}, Grade: ${grade});
+    console.log(`Score: ${score}, Grade: ${grade}`);
 }
 
 console.log("Grade Calculation Results:");  
